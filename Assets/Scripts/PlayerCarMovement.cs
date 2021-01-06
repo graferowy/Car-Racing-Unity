@@ -1,0 +1,22 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerCarMovement : MonoBehaviour
+{
+    public float carHorizontalSpeed = 2f;
+    private Vector3 carPosition;
+
+    private void Start()
+    {
+        carPosition = this.gameObject.transform.position;
+    }
+
+    private void Update()
+    {
+        carPosition.x += Input.GetAxis("Horizontal") * carHorizontalSpeed * Time.deltaTime;
+        carPosition.x = Mathf.Clamp(carPosition.x, -2.41f, 2.41f);
+        this.gameObject.transform.position = carPosition;
+    }
+}
