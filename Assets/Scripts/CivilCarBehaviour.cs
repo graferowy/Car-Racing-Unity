@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CivilCarBehaviour : MonoBehaviour
 {
+    public float crashDamage = 20f;
     public float civilCarSpeed = 5f;
     public int direction = -1;
     
@@ -15,10 +16,19 @@ public class CivilCarBehaviour : MonoBehaviour
         this.gameObject.transform.Translate(new Vector3(0, direction, 0) * civilCarSpeed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter2D(Collision2D obj)
+    {
+        if (obj.gameObject.tag == "Player")
+        {
+            obj.gameObject.GetComponent<PlayerCarMovement>().durability -= crashDamage / 5;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.gameObject.tag == "Player")
         {
+            obj.gameObject.GetComponent<PlayerCarMovement>().durability -= crashDamage;
             Debug.Log("Gracz w nas wjechał");
             Destroy(this.gameObject);
         } 

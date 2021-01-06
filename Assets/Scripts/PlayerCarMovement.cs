@@ -8,9 +8,13 @@ public class PlayerCarMovement : MonoBehaviour
     public float carHorizontalSpeed = 2f;
     private Vector3 carPosition;
 
+    public float maxDurability = 100f;
+    [HideInInspector] public float durability;
+
     private void Start()
     {
         carPosition = this.gameObject.transform.position;
+        durability = maxDurability;
     }
 
     private void Update()
