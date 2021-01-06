@@ -82,6 +82,15 @@ public class PoliceCarBehaviour : MonoBehaviour
     {
         if (obj.gameObject.tag == "Barrier")
         {
+            if (isLeft == true)
+            {
+                WaveManager.isLeft = false;
+            }
+            else if (isLeft == false)
+            {
+                WaveManager.isRight = false;
+            }
+
             Destroy(this.gameObject);
         }
     }
