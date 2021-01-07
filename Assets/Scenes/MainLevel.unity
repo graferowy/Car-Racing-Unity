@@ -607,7 +607,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.11764706, g: 0.11764706, b: 0.12156863, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2440,15 +2440,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   civilCarSpawnDelay: 2
   civilCar: {fileID: 1201310227270879743, guid: b4a8b8d72e952104ebb96f9efba1bbed, type: 3}
-  civilCarsAmount: 5
+  civilCarsAmount: 50
   banditCar: {fileID: 5938080550405858250, guid: ba2f1eda4e8a70446b83ef67c740d904, type: 3}
-  bombsAmount: 7
+  bombsAmount: 20
   banditCarVerticalSpeed: 5
   banditCarHorizontalSpeed: 2
   bombDelay: 1
   policeCar: {fileID: 339619074831617631, guid: d251362a7aa514149ac45f8268ba1eeb, type: 3}
-  policeCarAmount: 4
-  shootingSeriesDelay: 1
+  policeCarAmount: 10
+  shootingSeriesDelay: 1.15
   singleShotDelay: 0.25
   policeCarVerticalSpeed: 5
   bulletsInSeries: 3
