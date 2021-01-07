@@ -35,6 +35,11 @@ public class CivilCarBehaviour : MonoBehaviour
             Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         } 
+        else if (obj.gameObject.tag == "Shield")
+        {
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
         else if (obj.gameObject.tag == "EndOfTheRoad")
         {
             PointsManager.points += pointsPerCar;

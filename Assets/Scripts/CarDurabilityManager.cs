@@ -8,6 +8,7 @@ public class CarDurabilityManager : MonoBehaviour
     public GameObject playerCarPrefab;
     public GameObject spawnPoint;
     public TextMesh durabilityText;
+    public GameObject[] hearts;
     public int lifes;
     public GameObject EndGameScreen;
     [HideInInspector] public int maxLifes;
@@ -15,6 +16,7 @@ public class CarDurabilityManager : MonoBehaviour
 
     private void Start()
     {
+        durabilityText.GetComponent<MeshRenderer>().sortingLayerName = "Durability";
         maxLifes = lifes;
         playerCar = (GameObject)Instantiate(playerCarPrefab, spawnPoint.transform.position, Quaternion.identity);
     }
@@ -25,6 +27,7 @@ public class CarDurabilityManager : MonoBehaviour
         {
             Destroy(playerCar);
             lifes--;
+            Destroy(hearts[lifes]);
 
             if (lifes > 0)
             {

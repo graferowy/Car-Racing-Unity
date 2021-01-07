@@ -9,6 +9,7 @@ public class PointsManager : MonoBehaviour
     private float secondDelay = 1;
     private void Start()
     {
+        points = 0;
         this.gameObject.GetComponent<MeshRenderer>().sortingLayerName = "Points";
         this.gameObject.GetComponent<TextMesh>().color = new Color(1f, 1f, 1f, 0.7f);
     }
@@ -22,6 +23,11 @@ public class PointsManager : MonoBehaviour
         {
             points += 1;
             secondDelay = 1;
+        }
+
+        if (points < 0)
+        {
+            points = 0;
         }
     }
 }

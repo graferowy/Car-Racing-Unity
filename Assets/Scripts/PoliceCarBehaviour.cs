@@ -56,7 +56,8 @@ public class PoliceCarBehaviour : MonoBehaviour
         else
         {
             shootDelay -= Time.deltaTime;
-            if (shootDelay <= 0)
+            
+            if (shootDelay <= 0 && GameObject.FindWithTag("Untouchable") == false)
             {
                 StartCoroutine("Shoot");
                 shootDelay = shootingSeriesDelay;

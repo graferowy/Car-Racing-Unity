@@ -22,7 +22,7 @@ public class BanditCarBehaviour : MonoBehaviour
         Delay = bombDelay;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (playerCar == null)
         {
@@ -30,39 +30,43 @@ public class BanditCarBehaviour : MonoBehaviour
         }
         else
         {
-            if (gameObject.transform.position.y > 3.8f && bombsAmount > 0)
+            banditCarPos = Vector3.Lerp(transform.position, playerCar.transform.position, Time.deltaTime * banditCarHorizontalSpeed);
+            Mathf.Clamp(banditCarPos.x, -2.35f, 2.35f); 
+            transform.position = new Vector3(banditCarPos.x, transform.position.y, 0);
+        }
+    }
+
+    private void Update()
+    {
+        if (gameObject.transform.position.y > 3.8f && bombsAmount > 0)
+        {
+            this.gameObject.transform.Translate(new Vector3(0, -1, 0) * banditCarVerticalSpeed * Time.deltaTime);
+        }
+        else if (bombsAmount <= 0)
+        {
+            this.gameObject.transform.Translate(new Vector3(0, 1, 0) * banditCarVerticalSpeed * Time.deltaTime);
+
+            if (gameObject.transform.position.y > 6.5f)
             {
-                this.gameObject.transform.Translate(new Vector3(0, -1, 0) * banditCarVerticalSpeed * Time.deltaTime);
+                PointsManager.points += pointsPerCar;
+                Destroy(this.gameObject);
             }
-            else if (bombsAmount <= 0)
-            {
-                this.gameObject.transform.Translate(new Vector3(0, 1, 0) * banditCarVerticalSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Delay -= Time.deltaTime;
 
-                if (gameObject.transform.position.y > 6.5f)
-                {
-                    PointsManager.points += pointsPerCar;
-                    Destroy(this.gameObject);
-                }
+            if (Delay <= 0 && bombsAmount > 0)
+            {
+                Delay = bombDelay;
+                bombsAmount--;
+                Instantiate(bomb, transform.position, Quaternion.identity);
             }
-            else
+            else if (Delay <= 0 && bombsAmount <= 5 && bombsAmount > 0)
             {
-                banditCarPos = Vector3.Lerp(transform.position, playerCar.transform.position, Time.deltaTime * banditCarHorizontalSpeed);
-                transform.position = new Vector3(banditCarPos.x, transform.position.y, 0);
-
-                Delay -= Time.deltaTime;
-
-                if (Delay <= 0 && bombsAmount > 0)
-                {
-                    Delay = bombDelay;
-                    bombsAmount--;
-                    Instantiate(bomb, transform.position, Quaternion.identity);
-                }
-                else if (Delay <= 0 && bombsAmount <= 5 && bombsAmount > 0)
-                {
-                    Delay = bombDelay / 2;
-                    bombsAmount--;
-                    Instantiate(bomb, transform.position, Quaternion.identity);
-                }
+                Delay = bombDelay / 2;
+                bombsAmount--;
+                Instantiate(bomb, transform.position, Quaternion.identity);
             }
         }
     }

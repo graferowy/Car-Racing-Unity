@@ -24,6 +24,11 @@ public class HighScores : MonoBehaviour
             for (int i = 0; highScoresArray[i] != 0; i++)
             {
                 highScoresText.text += (i + 1) + ". " + highScoresArray[i] + "Pkt" + System.Environment.NewLine;
+
+                if (i == 9)
+                {
+                    break;
+                }
             }
         }
     }
