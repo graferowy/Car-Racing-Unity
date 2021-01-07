@@ -13,6 +13,7 @@ public class MenuFunctionality : MonoBehaviour
 
     public GameObject highScores;
     public GameObject menuButtons;
+    public GameObject settingsMenu;
 
     private void Start()
     {
@@ -52,7 +53,8 @@ public class MenuFunctionality : MonoBehaviour
 
     public void OptionsButton()
     {
-        //SceneManager.LoadScene(3);
+        menuButtons.SetActive(false);
+        settingsMenu.SetActive(true);
     }
 
     public void ExitButton()
