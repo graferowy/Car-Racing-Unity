@@ -3,7 +3,7 @@
 # Car Racing Game
 Unity project based on simgple car racingn game. Your task is to avoid obstacles, police cars and to collect bonuses.
 
-![Gameplay preview](https://im6.ezgif.com/tmp/ezgif-6-a1fbf2d757a6.gif)
+![Gameplay preview](https://i.gyazo.com/c3b168ab5bac7b80be9c876a49239118.gif)
 
 ## Software
 - Unity 2020.2.1f1
