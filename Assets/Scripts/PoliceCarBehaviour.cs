@@ -15,7 +15,9 @@ public class PoliceCarBehaviour : MonoBehaviour
     public float policeCarVerticalSpeed;
     public int bulletsInSeries;
     public GameObject explosion;
+    public AudioClip shotSound;
     [HideInInspector] public int pointsPerCar;
+    private AudioSource audio;
     private float lightShowDelay;
     private float shootDelay;
     private Vector3 policeCarPos;
@@ -25,6 +27,7 @@ public class PoliceCarBehaviour : MonoBehaviour
     {
         lightShowDelay = 2 * lightDelay;
         shootDelay = shootingSeriesDelay;
+        audio = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -65,6 +68,7 @@ public class PoliceCarBehaviour : MonoBehaviour
     {
         for (int i = bulletsInSeries; i > 0; i--)
         {
+            audio.PlayOneShot(shotSound, 0.77f);
             bulletObj = (GameObject)Instantiate(bullet, transform.position, Quaternion.identity);
 
             if (isLeft == true)
