@@ -11,11 +11,20 @@ public class MenuFunctionality : MonoBehaviour
     public float lightDelay;
     private float delay;
 
+    public GameObject highScores;
+    public GameObject menuButtons;
+
     private void Start()
     {
         delay = lightDelay;
         redLight.enabled = true;
         blueLight.enabled = false;
+
+        if (PlayerPrefsX.GetIntArray("HighScoreArray", 0, 10)[0] == 0)
+        {
+            int[] highScoresInitializationArray = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+            PlayerPrefsX.SetIntArray("HighScoreArray", highScoresInitializationArray);
+        }
     }
 
     private void Update()
@@ -37,7 +46,8 @@ public class MenuFunctionality : MonoBehaviour
 
     public void HighScoresButton()
     {
-        //SceneManager.LoadScene(2);
+        menuButtons.SetActive(false);
+        highScores.SetActive(true);
     }
 
     public void OptionsButton()
@@ -48,5 +58,11 @@ public class MenuFunctionality : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
+    }
+
+    public void GoBackButton()
+    {
+        highScores.SetActive(false);
+        menuButtons.SetActive(true);
     }
 }
