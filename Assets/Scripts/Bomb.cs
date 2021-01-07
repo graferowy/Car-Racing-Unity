@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public GameObject explosion;
     public int bombDamage;
     public float bombSpeed;
     [HideInInspector] public int pointsPerBomb;
@@ -20,10 +21,12 @@ public class Bomb : MonoBehaviour
         {
             PointsManager.points -= pointsPerBomb;
             obj.gameObject.GetComponent<PlayerCarMovement>().durability -= bombDamage;
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         } 
         else if (obj.gameObject.tag == "Shield")
         {
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
         else if (obj.gameObject.tag == "EndOfTheRoad")

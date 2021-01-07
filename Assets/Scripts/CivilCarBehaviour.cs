@@ -6,10 +6,10 @@ using UnityEngine;
 public class CivilCarBehaviour : MonoBehaviour
 {
     public float crashDamage = 20f;
+    public GameObject explosion;
     public float civilCarSpeed = 5f;
     public int direction = -1;
     [HideInInspector] public int pointsPerCar;
-    
     private Vector3 civilCarPosition;
 
     private void Update()
@@ -32,6 +32,7 @@ public class CivilCarBehaviour : MonoBehaviour
             PointsManager.points -= pointsPerCar;
             obj.gameObject.GetComponent<PlayerCarMovement>().durability -= crashDamage;
             Debug.Log("Gracz w nas wjechał");
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         } 
         else if (obj.gameObject.tag == "EndOfTheRoad")

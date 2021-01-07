@@ -248,6 +248,8 @@ MonoBehaviour:
   isLeft: 0
   policeCarVerticalSpeed: 4
   bulletsInSeries: 4
+  explosion: {fileID: 6400516976056238633, guid: e89bee3a38947cb4eaaa227ead792319, type: 3}
+  pointsPerCar: 0
 --- !u!1 &339619075219307609
 GameObject:
   m_ObjectHideFlags: 0

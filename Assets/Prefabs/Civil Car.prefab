@@ -198,5 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58dca4f6ddcf8a428e72ea16ef2b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crashDamage: 20
+  explosion: {fileID: 6400516976056238633, guid: e89bee3a38947cb4eaaa227ead792319, type: 3}
   civilCarSpeed: 5
   direction: -1
+  pointsPerCar: 0

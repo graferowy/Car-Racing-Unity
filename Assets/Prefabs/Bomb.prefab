@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1293028448fcb85429fb026ace62c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 6400516976056238633, guid: e89bee3a38947cb4eaaa227ead792319, type: 3}
   bombDamage: 25
   bombSpeed: 8
   pointsPerBomb: 20
