@@ -7,6 +7,7 @@ public class Bomb : MonoBehaviour
 {
     public int bombDamage;
     public float bombSpeed;
+    [HideInInspector] public int pointsPerBomb;
 
     private void Update()
     {
@@ -17,6 +18,7 @@ public class Bomb : MonoBehaviour
     {
         if (obj.gameObject.tag == "Player")
         {
+            PointsManager.points -= pointsPerBomb;
             obj.gameObject.GetComponent<PlayerCarMovement>().durability -= bombDamage;
             Destroy(this.gameObject);
         } 
@@ -26,6 +28,7 @@ public class Bomb : MonoBehaviour
         }
         else if (obj.gameObject.tag == "EndOfTheRoad")
         {
+            PointsManager.points += pointsPerBomb;
             Destroy(this.gameObject);
         }
     }

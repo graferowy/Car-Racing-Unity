@@ -10,6 +10,7 @@ public class BanditCarBehaviour : MonoBehaviour
     public int banditCarVerticalSpeed;
     public int banditCarHorizontalSpeed;
     public float bombDelay;
+    [HideInInspector] public int pointsPerCar;
 
     private float Delay;
     private GameObject playerCar;
@@ -39,6 +40,7 @@ public class BanditCarBehaviour : MonoBehaviour
 
                 if (gameObject.transform.position.y > 6.5f)
                 {
+                    PointsManager.points += pointsPerCar;
                     Destroy(this.gameObject);
                 }
             }

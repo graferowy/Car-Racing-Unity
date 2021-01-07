@@ -8,6 +8,7 @@ public class CivilCarBehaviour : MonoBehaviour
     public float crashDamage = 20f;
     public float civilCarSpeed = 5f;
     public int direction = -1;
+    [HideInInspector] public int pointsPerCar;
     
     private Vector3 civilCarPosition;
 
@@ -28,12 +29,14 @@ public class CivilCarBehaviour : MonoBehaviour
     {
         if (obj.gameObject.tag == "Player")
         {
+            PointsManager.points -= pointsPerCar;
             obj.gameObject.GetComponent<PlayerCarMovement>().durability -= crashDamage;
             Debug.Log("Gracz w nas wjechał");
             Destroy(this.gameObject);
         } 
         else if (obj.gameObject.tag == "EndOfTheRoad")
         {
+            PointsManager.points += pointsPerCar;
             Destroy(this.gameObject);
         }
     }

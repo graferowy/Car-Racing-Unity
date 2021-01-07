@@ -14,6 +14,7 @@ public class PoliceCarBehaviour : MonoBehaviour
     [HideInInspector] public bool isLeft;
     public float policeCarVerticalSpeed;
     public int bulletsInSeries;
+    [HideInInspector] public int pointsPerCar;
     private float lightShowDelay;
     private float shootDelay;
     private Vector3 policeCarPos;
@@ -91,6 +92,7 @@ public class PoliceCarBehaviour : MonoBehaviour
                 WaveManager.isRight = false;
             }
 
+            PointsManager.points += pointsPerCar;
             Destroy(this.gameObject);
         }
     }

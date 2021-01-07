@@ -32,6 +32,12 @@ public class WaveManager : MonoBehaviour
     static public bool isRight;
     private GameObject spawnedPoliceCar;
 
+    [Header("Points")] 
+    public int pointsPerCivilCar;
+    public int pointsPerBanditCar;
+    public int pointsPerBomb;
+    public int pointsPerPoliceCar;
+
     private float[] lanesArray;
     private float spawnDelay;
 
@@ -92,6 +98,7 @@ public class WaveManager : MonoBehaviour
         spawnedPoliceCar.GetComponent<PoliceCarBehaviour>().singleShotDelay = singleShotDelay;
         spawnedPoliceCar.GetComponent<PoliceCarBehaviour>().bulletsInSeries = bulletsInSeries;
         spawnedPoliceCar.GetComponent<PoliceCarBehaviour>().policeCarVerticalSpeed = policeCarVerticalSpeed;
+        spawnedPoliceCar.GetComponent<PoliceCarBehaviour>().pointsPerCar = pointsPerPoliceCar;
     }
 
     private void SpawnBanditCar()
@@ -119,6 +126,8 @@ public class WaveManager : MonoBehaviour
         spawnedBanditCar.GetComponent<BanditCarBehaviour>().banditCarVerticalSpeed = banditCarVerticalSpeed;
         spawnedBanditCar.GetComponent<BanditCarBehaviour>().banditCarHorizontalSpeed = banditCarHorizontalSpeed;
         spawnedBanditCar.GetComponent<BanditCarBehaviour>().bombDelay = bombDelay;
+        spawnedBanditCar.GetComponent<BanditCarBehaviour>().pointsPerCar = pointsPerBanditCar;
+        spawnedBanditCar.GetComponent<BanditCarBehaviour>().bomb.GetComponent<Bomb>().pointsPerBomb = pointsPerBomb;
     }
 
     private void SpawnCar()
@@ -130,11 +139,13 @@ public class WaveManager : MonoBehaviour
             GameObject car = Instantiate(civilCar, new Vector3(lanesArray[lane], 6f, 0), Quaternion.Euler(new Vector3(0, 0, 180)));
             car.GetComponent<CivilCarBehaviour>().direction = 1;
             car.GetComponent<CivilCarBehaviour>().civilCarSpeed = 12;
+            car.GetComponent<CivilCarBehaviour>().pointsPerCar = pointsPerCivilCar;
         }
 
         if (lane == 2 || lane == 3)
         {
-            Instantiate(civilCar, new Vector3(lanesArray[lane], 6f, 0), Quaternion.identity);
+            GameObject car = Instantiate(civilCar, new Vector3(lanesArray[lane], 6f, 0), Quaternion.identity);
+            car.GetComponent<CivilCarBehaviour>().pointsPerCar = pointsPerCivilCar;
         }
 
         civilCarsAmount--;
